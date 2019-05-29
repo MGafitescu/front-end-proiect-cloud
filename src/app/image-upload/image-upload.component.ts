@@ -14,7 +14,7 @@ export class ImageUploadComponent implements OnInit {
   image: string;
   loading = false;
   result: any;
-  url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCBHSVex2v8NPtX0M3_lO_9ciA6f_BuuJc&q=";
+  url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyD5NzUbN1adL2_vBQ3xmif7LxDHaTDNMhk&q=";
   map = '';
 
   constructor(private imageService: ImageService) { }

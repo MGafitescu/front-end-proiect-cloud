@@ -10,7 +10,7 @@ import { ImageService } from '../image.service';
 export class HistoryComponent implements OnInit {
 
   photoHistory: any;
-  url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCBHSVex2v8NPtX0M3_lO_9ciA6f_BuuJc&q=";
+  url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyD5NzUbN1adL2_vBQ3xmif7LxDHaTDNMhk&q=";
   map: string[];
 
   constructor(private imageService: ImageService) { }
