@@ -15,8 +15,8 @@ export class ImageService {
 
   constructor(private http: HttpClient) { }
 
-  private imageUploadUrl = 'https://back-end-t3.appspot.com/upload_photo';
-  private historyUrl = 'https://back-end-t3.appspot.com';
+  private imageUploadUrl = 'https://back-end-proiect-cloud.appspot.com/upload_photo';
+  private historyUrl = 'https://back-end-proiect-cloud.appspot.com';
 
   public postImage(image) {
     console.log('Uploading...');
