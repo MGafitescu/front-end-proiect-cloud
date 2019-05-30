@@ -14,13 +14,28 @@
       <input #file type="file" accept='image/*' (change)="preview(file)" />
       <button mat-raised-button color="primary" (click)="upload()" style="margin-left:1rem;">Upload</button>
     </div>
+    <mat-form-field>
+      <mat-label>Your language</mat-label>
+      <mat-select [(value)]="selectedLang">
+        <mat-option *ngFor="let lang of languages" [value]="lang.value">
+          {{lang.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <div style="margin-top:1rem;">
       <mat-spinner *ngIf="loading"></mat-spinner>
       <section *ngIf="result">
         <h3 class="center" style="color:#3F51B5;">{{result.description}}</h3>
+        <strong>Address:</strong> {{result.formatted_address}}
+        <strong>Telephone:</strong> {{result.formatted_phone_number}}
+        <strong>International Telephone:</strong> {{result.international_phone_number}}
+        <strong>Types:</strong> <span *ngFor="let type of result.types"></span>
+        <strong>Website:</strong> {{result.website}}
         <iframe width="560" height="500" frameborder="0" style="border:0" [src]="map | safe" allowfullscreen>
         </iframe>
       </section>
+      <mat-spinner *ngIf="loadingAudio"></mat-spinner>
     </div>
   </mat-card>
 </div>

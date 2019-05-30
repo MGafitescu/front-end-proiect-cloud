@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../image.service';
+import { Language, TTSlanguages } from '../languages';
+import { StringifyOptions } from 'querystring';
+import { TextToSpeechService } from '../text-to-speech.service';
+
 
 @Component({
   selector: 'app-image-upload',
@@ -16,8 +20,12 @@ export class ImageUploadComponent implements OnInit {
   result: any;
   url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyD5NzUbN1adL2_vBQ3xmif7LxDHaTDNMhk&q=";
   map = '';
+  languages: Language[] = TTSlanguages;
+  selectedLang: string;
+  loadingAudio = false;
+  audioFile: any;
 
-  constructor(private imageService: ImageService) { }
+  constructor(private imageService: ImageService, private ttsService: TextToSpeechService) { }
 
   ngOnInit() {
   }
@@ -43,18 +51,29 @@ export class ImageUploadComponent implements OnInit {
     fileReader.onloadend = () => {
       this.image = <string>fileReader.result;
       let reg = new RegExp("^data:image\/[a-zA-Z]+;base64,");
-      this.image = this.image.replace(reg,"");
+      this.image = this.image.replace(reg, "");
       //console.log(this.image);
     }
   }
 
   async upload() {
     this.loading = true;
-    this.result = await this.imageService.postImage({filename: this.imagePath, file: this.image});
+    this.result = await this.imageService.postImage({ filename: this.imagePath, file: this.image, language: this.selectedLang });
     this.result = JSON.parse(this.result);
     this.map = this.url + <string>this.result.latitude + "," + <string>this.result.longitude;
     console.log(this.result);
+    this.audioFile = await this.ttsService.getSpeech(this.result.wikipedia_extract, this.selectedLang);
+    console.log(this.audioFile);
     this.loading = false;
+  }
+
+  playAudio(audioSrc) {
+    this.loadingAudio = true;
+    let audio = new Audio();
+    audio.src = audioSrc;
+    audio.load();
+    this.loadingAudio = true;
+    audio.play();
   }
 
 }
