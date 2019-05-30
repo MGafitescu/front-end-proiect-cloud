@@ -24,6 +24,7 @@ export class ImageUploadComponent implements OnInit {
   selectedLang: string;
   loadingAudio = false;
   audioFile: string;
+  toggle = false;
 
   constructor(private imageService: ImageService, private ttsService: TextToSpeechService) { }
 
@@ -68,6 +69,7 @@ export class ImageUploadComponent implements OnInit {
     this.audioFile = this.result.audio;
     console.log(this.result);
     this.loading = false;
+    this.toggle = !this.toggle;
   }
 
 }
