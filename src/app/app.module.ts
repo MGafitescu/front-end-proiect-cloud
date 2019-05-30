@@ -12,13 +12,15 @@ import {MatCardModule} from '@angular/material/card';
 import { SafePipe } from './safe.pipe';
 import { HistoryComponent } from './history/history.component';
 import {MatSelectModule} from '@angular/material/select';
+import { TextUploadComponent } from './text-upload/text-upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImageUploadComponent,
     SafePipe,
-    HistoryComponent
+    HistoryComponent,
+    TextUploadComponent
   ],
   imports: [
     BrowserModule,

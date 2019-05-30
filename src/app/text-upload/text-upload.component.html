@@ -1,0 +1,38 @@
+<div class="flex-container">
+  <mat-card class="flex-container" style="margin-top: 2rem;">
+    <div>
+      <h1>
+        Upload your text
+      </h1>
+    </div>
+    <div>
+      <i class="fas fa-upload center image" style="font-size:48px;color:#3F51B5;width:48px;" *ngIf="!imageUrl"></i>
+      <img [src]="imageUrl" style="width:35rem;" *ngIf="imageUrl">
+    </div>
+    <div style="margin-top:1rem;">
+      <span style="color:red;" *ngIf="message">{{message}}</span>
+      <input #file type="file" accept='image/*' (change)="preview(file)" />
+      <button mat-raised-button color="primary" (click)="upload()" style="margin-left:1rem;">Upload</button>
+    </div>
+    <mat-form-field>
+      <mat-label>Your language</mat-label>
+      <mat-select [(value)]="selectedLang">
+        <mat-option *ngFor="let lang of languages" [value]="lang.value">
+          {{lang.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div style="margin-top:1rem;">
+      <mat-spinner *ngIf="loading"></mat-spinner>
+      <section *ngIf="result">
+        <strong>Original text:</strong> {{result.original}}<br>
+        <strong>Translated text:</strong> {{result.translated}}<br>
+      </section>
+      <mat-spinner *ngIf="loadingAudio"></mat-spinner>
+      <audio controls class="center" *ngIf="audioFile != undefine">
+        <source [src]="audioFile" type="audio/mp3">
+      </audio>
+    </div>
+  </mat-card>
+</div>
