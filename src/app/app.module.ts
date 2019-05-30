@@ -28,7 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

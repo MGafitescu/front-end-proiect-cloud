@@ -37,9 +37,9 @@
         </iframe>
       </section>
       <mat-spinner *ngIf="loadingAudio"></mat-spinner>
-      <button  mat-raised-button color="primary" (click)="playAudio()"
-        class="center">Play<i class="fas fa-play" style="margin-left: 1rem;"></i>
-      </button>
+      <audio controls class="center" *ngIf="audioFile != undefine">
+        <source [src]="audioFile" type="audio/mp3">
+      </audio>
     </div>
   </mat-card>
 </div>
