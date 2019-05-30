@@ -36,10 +36,9 @@
         <iframe width="560" height="500" frameborder="0" style="border:0" [src]="map | safe" allowfullscreen>
         </iframe>
       </section>
-      <mat-spinner *ngIf="loadingAudio"></mat-spinner>
-      <audio controls class="center" *ngIf="audioFile != undefine">
-        <source [src]="audioFile" type="audio/mp3">
-      </audio>
     </div>
+    <audio controls class="center" *ngIf="audioFile != undefine">
+      <source [src]="audioFile" type="audio/mp3">
+    </audio>
   </mat-card>
 </div>
