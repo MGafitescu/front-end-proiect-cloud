@@ -21,10 +21,12 @@ export class TextUploadComponent implements OnInit {
   selectedLang: string;
   loadingAudio = false;
   audioFile: string;
+  toggle: boolean;
 
   constructor(private imageService: ImageService) { }
 
   ngOnInit() {
+    this.toggle = true;
   }
 
   preview(file) {
@@ -65,6 +67,7 @@ export class TextUploadComponent implements OnInit {
     this.audioFile = this.result.audio;
     console.log(this.result);
     this.loading = false;
+    this.toggle = !this.toggle;
   }
 
 }

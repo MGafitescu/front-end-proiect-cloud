@@ -30,7 +30,10 @@
         <strong>Translated text:</strong> {{result.translated_text}}<br><br>
       </section>
     </div>
-    <audio controls class="center" *ngIf="audioFile != undefined">
+    <audio controls class="center" *ngIf="audioFile != undefined && toggle" style=" outline: none; user-select: none">
+      <source [src]="audioFile" type="audio/mp3">
+    </audio>
+    <audio controls class="center" *ngIf="audioFile != undefined && !toggle" style=" outline: none; user-select: none">
       <source [src]="audioFile" type="audio/mp3">
     </audio>
   </mat-card>
