@@ -27,10 +27,10 @@
       <mat-spinner *ngIf="loading"></mat-spinner>
       <section *ngIf="result">
         <h3 class="center" style="color:#3F51B5;">{{result.description}}</h3>
-        <strong>Address:</strong> {{result.formatted_address}}
-        <strong>Telephone:</strong> {{result.formatted_phone_number}}
-        <strong>International Telephone:</strong> {{result.international_phone_number}}
-        <strong>Types:</strong> <span *ngFor="let type of result.types"></span>
+        <strong>Address:</strong> {{result.formatted_address}}<br>
+        <strong>Telephone:</strong> {{result.formatted_phone_number}}<br>
+        <strong>International Telephone:</strong> {{result.international_phone_number}}<br>
+        <strong>Types:</strong> <span *ngFor="let type of result.types">{{type}} </span><br>
         <strong>Website:</strong> {{result.website}}
         <iframe width="560" height="500" frameborder="0" style="border:0" [src]="map | safe" allowfullscreen>
         </iframe>
