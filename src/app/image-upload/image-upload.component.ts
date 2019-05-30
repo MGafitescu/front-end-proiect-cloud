@@ -58,13 +58,16 @@ export class ImageUploadComponent implements OnInit {
 
   async upload() {
     this.loading = true;
-    this.result = await this.imageService.postImage({ filename: this.imagePath, file: this.image, language: this.selectedLang });
+    let lang;
+    if (this.selectedLang == undefined)
+      lang = "en-GB";
+    this.result = await this.imageService.postImage({ filename: this.imagePath, file: this.image, language: lang });
     this.result = JSON.parse(this.result);
     this.map = this.url + <string>this.result.latitude + "," + <string>this.result.longitude;
     console.log(this.result);
-    this.audioFile = await this.ttsService.getSpeech(this.result.wikipedia_extract, this.selectedLang);
-    console.log(this.audioFile);
     this.loading = false;
+    this.audioFile = await this.ttsService.getSpeech(this.result.wikipedia_extract, lang);
+    console.log(this.audioFile);
   }
 
   playAudio(audioSrc) {

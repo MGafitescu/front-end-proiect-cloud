@@ -13,8 +13,7 @@ const httpOptions = {
 })
 export class TextToSpeechService {
 
-  private client;
-  private ttsUrl = "https://texttospeech.googleapis.com/v1/text:synthesize";
+  private ttsUrl = "https://texttospeech.googleapis.com/v1/text:synthesize?key=AIzaSyDvgTvCu9L8FYXckNZG2cn76-pKqsbj36w";
 
   constructor(private http: HttpClient) {
 
