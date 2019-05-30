@@ -67,16 +67,19 @@ export class ImageUploadComponent implements OnInit {
     this.map = this.url + <string>this.result.latitude + "," + <string>this.result.longitude;
     console.log(this.result);
     this.loading = false;
-    this.audioFile = await this.ttsService.getSpeech(this.result.wikipedia_extract, lang);
+    this.audioFile = (await this.ttsService.getSpeech(this.result.wikipedia_extract, lang)).audioContent;
     console.log(this.audioFile);
   }
 
-  playAudio(audioSrc) {
+  async playAudio() {
+    // let text = "Pomo want to fuck stupid beaches and suck banana";
+    // let lang = "en-GB";
+    // this.audioFile = await this.ttsService.getSpeech(text, lang);
     this.loadingAudio = true;
     let audio = new Audio();
-    audio.src = audioSrc;
+    audio.src = this.audioFile;
     audio.load();
-    this.loadingAudio = true;
+    this.loadingAudio = false;
     audio.play();
   }
 
