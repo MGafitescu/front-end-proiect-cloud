@@ -17,7 +17,7 @@
     <div style="margin-top:1rem;">
       <mat-spinner *ngIf="loading"></mat-spinner>
       <section *ngIf="result">
-        <h3 class="center" style="width:30rem; color:#3F51B5;">{{result.description}}</h3>
+        <h3 class="center" style="color:#3F51B5;">{{result.description}}</h3>
         <iframe width="560" height="500" frameborder="0" style="border:0" [src]="map | safe" allowfullscreen>
         </iframe>
       </section>
