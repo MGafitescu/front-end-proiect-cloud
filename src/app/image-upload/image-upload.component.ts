@@ -61,6 +61,7 @@ export class ImageUploadComponent implements OnInit {
     let lang;
     if (this.selectedLang == undefined)
       lang = "en-GB";
+    else lang = this.selectedLang;
     this.result = await this.imageService.postImage({ filename: this.imagePath, file: this.image, language: lang });
     this.result = JSON.parse(this.result);
     this.map = this.url + <string>this.result.latitude + "," + <string>this.result.longitude;
